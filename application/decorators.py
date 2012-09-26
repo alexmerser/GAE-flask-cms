@@ -10,7 +10,7 @@ from google.appengine.api import users
 from flask import redirect, request
 
 
-def login_required(func):
+def admin_required(func):
     """Requires standard login credentials"""
     @wraps(func)
     def decorated_view(*args, **kwargs):
@@ -20,7 +20,7 @@ def login_required(func):
     return decorated_view
 
 
-def admin_required(func):
+def login_required(func):
     """Requires App Engine admin credentials"""
     @wraps(func)
     def decorated_view(*args, **kwargs):

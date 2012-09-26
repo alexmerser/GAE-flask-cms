@@ -1,0 +1,120 @@
+{% extends "frontend_base.html" %}
+
+{% block tableid%}flash{% endblock %}
+
+{% block top_content %}
+	<td width="960" height="300">
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="960" height="300" align="absmiddle" id="FlashID">
+          <param name="movie" value="{{ url_for('static', filename='fla/home_banner_01.swf') }}" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />          
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />          
+          <!--[if !IE]>-->
+          <object data="{{ url_for('static', filename='fla/home_banner_01.swf') }}" type="application/x-shockwave-flash" width="960" height="300" align="absmiddle">
+            <!--<![endif]-->
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />            
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>-->
+          </object>
+          <!--<![endif]-->
+        </object>
+	</td>
+{% endblock %}
+
+{% block bottom_content %}
+	<tr valign="top">
+        <td width="960" height="20"><img src="{{ url_for('static', filename='img/home/home_content_top.jpg') }}" width="960" height="20" /></td>
+    </tr>
+    <tr>
+        <td height="450" bgcolor="#fcfcfc"><table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr  valign="top">
+            <td width="400"><table width="400" border="0" cellpadding="0" cellspacing="0" id="textbox">
+              <tr>
+                <td class="title"><img src="{{ url_for('static', filename='img/home/home_title_recentnews.jpg') }}" width="400" height="25" /></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="text_blue"><table width="400" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="30" height="15"><img src="{{ url_for('static', filename='img/home/icon_bubble.gif') }}" width="15" height="15" /></td>
+                    <td class="title01_dark">October 03 / <span class="title01_light">Press release</span></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td class="text_blue">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><span class="title_text_blue"><span class="title_blue">Launched in 2010 as mobile by Pixel Media and rebranded as Snap Mobile in October 2012</span></span></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="body_text"><span class="body">We aim to provide advertisers with the best solutions to reach their audience on mobile and most innovative advertising formats to effectively convey their brand message. Snap Mobile focuses exclusively on advertising on smartphones and currently focus on three major platforms being iOS, Android and Mobile Internet.</span></td>
+              </tr>
+              <tr>
+                <td class="body_text">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="body_text"><a href="pressroom.html"><img src="{{ url_for('static', filename='img/home/btn_read_more.gif') }}" width="150" height="36" id="Image16" /></a></td>
+              </tr>
+            </table></td>
+            <td width="30">&nbsp;</td>
+            <td><table width="400" border="0" cellpadding="0" cellspacing="0" id="textbox2">
+              <tr>
+                <td class="title"><img src="{{ url_for('static', filename='img/home/home_title_adformats.jpg') }}" width="400" height="25" /></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="text_blue"><table width="400" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="200" height="15"><span class="title01_light"><span class="title01_dark">SPLASH AD</span></span></td>
+                    <td class="title01_dark"><span class="title01_dark">FULL PAGE SPLASH AD</span></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td class="text_blue">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><table width="400" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="200"><img src="{{ url_for('static', filename='img/home/home_mobile01.jpg') }}" width="126" height="255" /></td>
+                    <td><img src="{{ url_for('static', filename='img/home/home_mobile02.jpg') }}" width="126" height="255" /></td>
+                  </tr>
+                </table></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><a href="advertise.html"><img src="{{ url_for('static', filename='img/home/btn_read_more.gif') }}" width="150" height="36" id="btn02" /></a></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#fcfcfc">&nbsp;</td>
+    </tr>
+{% endblock %}
+
+{% block tail_script %}
+	<script type="text/javascript">
+		swfobject.registerObject("FlashID");
+	</script>
+{% endblock %}

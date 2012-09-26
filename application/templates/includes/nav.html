@@ -1,35 +1,12 @@
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="/">Flask on App Engine</a>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Dropdown Menu
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Item One</a></li>
-                            <li><a href="#">Item Two</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="https://developers.google.com/appengine/docs/python/python27/using27">App Engine docs</a>
-                    </li>
-                    <li>
-                        <a href="http://flask.pocoo.org/">Flask docs</a>
-                    </li>
-                    <li>
-                        <a href="http://twitter.github.com/bootstrap">Bootstrap docs</a>
-                    </li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!-- /.navbar .container -->
-    </div><!-- /.navbar-inner -->
-</div><!-- /navbar -->
+  <tr>
+    <td background="{{ url_for('static', filename='img/common/menu_tile_bg.jpg') }}" height="50"><table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="160" height="50"><a href="home" target="_self"><img src="{% if nav == 'home' %}{{ url_for('static', filename='img/common/menu_home.jpg') }}{% else %}{{ url_for('static', filename='img/common/menu_home_gre.jpg') }}{% endif %}" alt="Home" name="Image1" width="160" height="50" id="Image1" /></a></td>
+        <td width="160" height="50"><a href="about" target="_self"><img src="{% if nav == 'about' %}{{ url_for('static', filename='img/common/menu_aboutus.jpg') }}{% else %}{{ url_for('static', filename='img/common/menu_aboutus_gre.jpg') }}{% endif %}" alt="About us" name="Image2" width="160" height="50" id="Image2" /></a></td>
+        <td width="160" height="50"><a href="advertise" target="_self"><img src="{% if nav == 'advertise' %}{{ url_for('static', filename='img/common/menu_advertise.jpg') }}{% else %}{{ url_for('static', filename='img/common/menu_advertise_gre.jpg') }}{% endif %}" alt="Advertise" name="Image3" width="160" height="50" id="Image3" /></a></td>
+        <td width="160" height="50"><a href="monetize" target="_self"><img src="{% if nav == 'monetize' %}{{ url_for('static', filename='img/common/menu_monetize.jpg') }}{% else %}{{ url_for('static', filename='img/common/menu_monetize_gre.jpg') }}{% endif %}" alt="Monetize" name="Image4" width="160" height="50" id="Image4" /></a></td>
+        <td width="160" height="50"><a href="contact" target="_self"><img src="{% if nav == 'contact' %}{{ url_for('static', filename='img/common/menu_contactus.jpg') }}{% else %}{{ url_for('static', filename='img/common/menu_contactus_gre.jpg') }}{% endif %}" alt="Contact" name="Image5" width="160" height="50" id="Image5" /></a></td>
+        <td width="160" height="50"><a href="pressroom" target="_self"><img src="{% if nav == 'pressroom' %}{{ url_for('static', filename='img/common/menu_pressroom.jpg') }}{% else %}{{ url_for('static', filename='img/common/menu_pressroom_gre.jpg') }}{% endif %}" alt="Pressroom" name="Image6" width="160" height="50" id="Image6" /></a></td>
+      </tr>
+    </table></td>
+  </tr>
