@@ -6,6 +6,11 @@ Initialize Flask app
 from flask import Flask
 from flaskext.gae_mini_profiler import GAEMiniProfiler
 
+#from werkzeug import secure_filename
+
+DEBUG = True
+
+
 app = Flask('application')
 app.config.from_object('application.settings')
 

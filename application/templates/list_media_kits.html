@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: 100%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="">All Apps</h1>
+    <div>&nbsp;</div>
+
+	<form id="new-app-1-form" class="well form-horizontal" action="{{ url_for('upload_mediakit') }}" method="post" enctype=multipart/form-data>
+		<legend>iOS-iPhone</legend>
+        <fieldset>
+            {{ form.hidden_tag() }}
+			<input id="mediakit_category" type="hidden" value="1" name="mediakit_category">
+            <div class="control-group">
+                <div class="control-label">{{ form.mediaurl.label }}</div>
+                <div class="controls">
+					{{ form.mediaurl|safe }}
+				</div>
+            </div>
+			<div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit" value="Upload"/>Upload</button>
+                </div>
+            </div>
+		</fieldset>
+        {% for mediakit in mediakits %}
+        	{% set category_id = mediakit.mediakit_category %}
+            {% if category_id == '1' %}
+            <a href="{{ url_for('get_file', category_id=mediakit.mediakit_category) }}" target="_blank">{{ mediakit.medianame }}</a>
+            {% endif %}
+        {% endfor %}    
+    </form>
+
+	<form id="new-app-2-form" class="well form-horizontal" action="{{ url_for('upload_mediakit') }}" method="post" enctype=multipart/form-data>
+		<legend>iOS-iPad</legend>
+        <fieldset>
+            {{ form.hidden_tag() }}
+			<input id="mediakit_category" type="hidden" value="2" name="mediakit_category">
+            <div class="control-group">
+                <div class="control-label">{{ form.mediaurl.label }}</div>
+                <div class="controls">
+					{{ form.mediaurl|safe }}
+				</div>
+            </div>
+			<div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit" value="Upload"/>Upload</button>
+                </div>
+            </div>
+		</fieldset>
+        {% for mediakit in mediakits %}
+            {% set category_id = mediakit.mediakit_category %}
+            {% if category_id == '2' %}
+            <a href="{{ url_for('get_file', category_id=mediakit.mediakit_category) }}" target="_blank">{{ mediakit.medianame }}</a>
+            {% endif %}
+        {% endfor %} 
+    </form>
+
+	<form id="new-app-form" class="well form-horizontal" action="{{ url_for('upload_mediakit') }}" method="post" accept-charset="utf-8" enctype=multipart/form-data>
+		<legend>Android</legend>
+        <fieldset>
+            {{ form.hidden_tag() }}
+			<input id="mediakit_category" type="hidden" value="3" name="mediakit_category">
+            <div class="control-group">
+                <div class="control-label">{{ form.mediaurl.label }}</div>
+                <div class="controls">
+					{{ form.mediaurl|safe }}
+				</div>
+            </div>
+			<div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-primary" type="submit" value="Upload"/>
+                </div>
+            </div>
+		</fieldset>
+        {% for mediakit in mediakits %}
+            {% set category_id = mediakit.mediakit_category %}
+            {% if category_id == '3' %}
+            <a href="{{ url_for('get_file', category_id=mediakit.mediakit_category) }}" target="_blank">{{ mediakit.medianame }}</a>
+            {% endif %}
+        {% endfor %}
+    </form>
+
+	<form id="new-app-form" class="well form-horizontal" action="{{ url_for('upload_mediakit') }}" method="post" accept-charset="utf-8">
+		<legend>Mobile Site</legend>
+        <fieldset>
+            {{ form.hidden_tag() }}
+			<input id="mediakit_category" type="hidden" value="4" name="mediakit_category">
+            <div class="control-group">
+                <div class="control-label">{{ form.mediaurl.label }}</div>
+                <div class="controls">
+					{{ form.mediaurl|safe }}
+				</div>
+            </div>
+			<div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-primary" type="submit" value="Upload"/>
+                </div>
+            </div>
+		</fieldset>
+        {% for mediakit in mediakits %}
+            {% set category_id = mediakit.mediakit_category %}
+            {% if category_id == '3' %}
+            <a href="{{ url_for('get_file', category_id=mediakit.mediakit_category) }}" target="_blank">{{ mediakit.medianame }}</a>
+            {% endif %}
+        {% endfor %}
+    </form>
+
+	<form id="new-app-form" class="well form-horizontal" action="{{ url_for('upload_mediakit') }}" method="post" accept-charset="utf-8">
+		<legend>Production</legend>
+        <fieldset>
+            {{ form.hidden_tag() }}
+			<input id="mediakit_category" type="hidden" value="5" name="mediakit_category">
+            <div class="control-group">
+                <div class="control-label">{{ form.mediaurl.label }}</div>
+                <div class="controls">
+					{{ form.mediaurl|safe }}
+				</div>
+            </div>
+			<div class="control-group">
+                <div class="controls">
+                    <input class="btn btn-primary" type="submit" value="Upload"/>
+                </div>
+            </div>
+		</fieldset>
+    </form>
+	
+{% endblock content %}
+
+{% block tail_script %}
+    <script>
+        var FormHelpers = {
+            validate: function (form, evt) {
+                // Form validation for modal dialog
+                var app_title = form.find('#app_title').val();
+                var app_category = form.find('#app_category').val();
+				var app_url = form.find('#app_url').val();
+                if (!(app_title)) {
+                    evt.preventDefault();
+                    Utils.renderFieldErrorTooltip('#title', 'Title is required', 'right');
+                }
+                if (!(app_category)) {
+                    evt.preventDefault();
+                    Utils.renderFieldErrorTooltip('#link', 'Category is required', 'right');
+                }
+				if (!(app_url)) {
+                    evt.preventDefault();
+                    Utils.renderFieldErrorTooltip('#link', 'Category is required', 'right');
+                }
+            },
+            init: function () {
+                var self = this;
+                var example_form = $('#new-app-form');
+                example_form.on('submit', function (evt) {
+                    self.validate(example_form, evt)
+                });
+            }
+        };
+        $(document).ready(function() {
+            // Enable modal dialog (via Bootstrap's 'modal' plugin)
+            $('#new-app-modal').modal({'show': false});
+			$('#new-app-modal').on('hidden', function () {
+			 	$('.tooltip').hide();
+			})
+            FormHelpers.init();
+        });
+    </script>
+{% endblock %}

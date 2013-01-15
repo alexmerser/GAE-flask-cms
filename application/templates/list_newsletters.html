@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block style_block %}
+    <style type="text/css">
+        table.table { width: 100%; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <h1 id="">All Newsletters</h1>
+    <div>&nbsp;</div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+				<th>Link</th>
+                <th>Added on</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for newsletter in newsletters %}
+            {% set newsletter_id = newsletter.key().id() %}
+            <tr>
+                <td>{{ newsletter_id }}</td>
+                <td>{{ newsletter.title }}</td>
+                <td>{{ newsletter.description }}</td>
+				<td>{{ newsletter.link }}</td>
+                <td>{{ newsletter.timestamp.strftime('%b %d, %Y %I:%M %p') }}</td>
+                <td>	
+                    <form method="post" action="{{ url_for('delete_newsletter', newsletter_id=newsletter_id) }}">
+                        <button class="btn">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6">No newsletters yet</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>
+        <a class="btn btn-primary" data-toggle="modal" data-target="#new-newsletter-modal">
+            <i class="icon-plus-sign icon-white"></i>
+            New newsletter
+        </a>
+    </p>
+
+    {% include 'new_newsletter.html' %} {# pull in new_example form (modal dialog) #}
+
+{% endblock content %}
+
+{% block tail_script %}
+    <script>
+        var FormHelpers = {
+            validate: function (form, evt) {
+                // Form validation for modal dialog
+                var title = form.find('#title').val();
+                var link = form.find('#link').val();
+                if (!(title)) {
+                    evt.preventDefault();
+                    Utils.renderFieldErrorTooltip('#title', 'Title is required', 'right');
+                }
+                if (!(link)) {
+                    evt.preventDefault();
+                    Utils.renderFieldErrorTooltip('#link', 'Newsletter Link is required', 'right');
+                }
+            },
+            init: function () {
+                var self = this;
+                var example_form = $('#new-newsletter-form');
+                example_form.on('submit', function (evt) {
+                    self.validate(example_form, evt)
+                });
+            }
+        };
+        $(document).ready(function() {
+            // Enable modal dialog (via Bootstrap's 'modal' plugin)
+            $('#new-newsletter-modal').modal({'show': false});
+			$('#new-newsletter-modal').on('hidden', function () {
+			 	$('.tooltip').hide();
+			})
+            FormHelpers.init();
+        });
+    </script>
+{% endblock %}

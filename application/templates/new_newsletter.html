@@ -1,0 +1,53 @@
+<div class="modal fade" id="new-newsletter-modal">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3>Add a New Newsletter</h3>
+    </div>
+    <div class="modal-body">
+        <form id="new-newsletter-form" class="well form-horizontal"
+            action="{{ url_for('list_newsletters') }}" method="post" accept-charset="utf-8">
+            <fieldset>
+                {{ form.hidden_tag() }}
+                <div class="control-group">
+                    <div class="control-label">{{ form.title.label }}</div>
+                    <div class="controls">
+                        {{ form.title|safe }}
+                        {% if form.title.errors %}
+                        <ul class="errors">
+                            {% for error in form.title.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">{{ form.description.label }}</div>
+                    <div class="controls">
+                        {{ form.description|safe }}
+                    </div>
+                </div>
+				<div class="control-group">
+                    <div class="control-label">{{ form.link.label }}</div>
+                    <div class="controls">
+                        {{ form.link|safe }}
+                        {% if form.link.errors %}
+                        <ul class="errors">
+                            {% for error in form.link.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input class="btn btn-primary" type="submit" value="Add Newsletter"/>
+                        <button class="btn" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
