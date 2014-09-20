@@ -1,7 +1,7 @@
-SNAP CMS
+CMS
 =================
 
-Snap CMS is a python based CMS written with Flaskr Framework and deployable at GAE (Google App Engine)
+CMS is a python based CMS written with Flaskr Framework and deployable at GAE (Google App Engine)
 
 Usage
 -------
